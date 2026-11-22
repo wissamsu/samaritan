@@ -39,6 +39,7 @@ spring:
               predicates:
                 - Path=/api/user-service/**
               filters:
+                - TokenRelay=
                 - name: RequestRateLimiter
                   args:
                     key-resolver: "#{@ipKeyResolver}"
