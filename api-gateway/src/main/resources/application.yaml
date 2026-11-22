@@ -19,7 +19,7 @@ spring:
         registration:
           keycloak:
             client-id: samaritan
-            client-secret: PXnhBrcPC5lFQ9YOIMjgJSBcxuDEkoa92DcGEAYieeaoosWjdvS02yU59nplD4pTucjT50QieSFHh7hSAv4lzR
+            client-secret: t7rqN5xqUTyoDgVH9tpjMaeotIDJGN4fjJu8fdfG2eCpIkh9PE1MbZq80z0jUsgeOOtOXy735zAlSpWFkNextm
             scope: openid,profile,email
   threads:
     virtual:
