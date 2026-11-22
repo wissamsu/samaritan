@@ -47,3 +47,8 @@ spring:
   threads:
     virtual:
       enabled: true
+  grpc:
+    server:
+      enabled: false
+    client:
+      enabled: false

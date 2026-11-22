@@ -28,6 +28,7 @@ public class SecurityConfig {
             .pathMatchers("/actuator/health/**").permitAll()
             .pathMatchers("/fallback/**").permitAll()
             .anyExchange().authenticated())
+        .oauth2Login(Customizer.withDefaults())
         .oauth2ResourceServer(oath2 -> oath2.jwt(Customizer.withDefaults()));
 
     return http.build();

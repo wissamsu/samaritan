@@ -3,7 +3,7 @@ WORKDIR /app
 COPY . .
 RUN mvn -pl eureka-service -am package -DskipTests
 
-FROM eclipse-temurin:21.0.13.1_2-jre-alpine
+FROM eclipse-temurin:21-jre-alpine-3.24
 WORKDIR /app
 COPY --from=builder /app/eureka-service/target/*.jar app.jar
 EXPOSE 8761

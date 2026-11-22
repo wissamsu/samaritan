@@ -9,7 +9,7 @@ services:
       eureka-service:
         condition: service_healthy
   postgres:
-    image: postgres:latest
+    image: postgres:19-alpine
     ports:
       - "5432:5432"
     environment:
@@ -19,7 +19,7 @@ services:
     volumes:
       - userdb_data:/var/lib/postgresql
   postgres_keycloak:
-    image: postgres:latest
+    image: postgres:19-alpine
     ports:
       - 5433:5432
     environment:
