@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FallbackController {
 
-  @RequestMapping("/fallback/user_service")
+  @RequestMapping("/fallback/user-service")
   public ResponseEntity<String> fallbackCB() {
     return ResponseEntity.status(503).body("User Service is currently unavailable. Please try again later");
   }

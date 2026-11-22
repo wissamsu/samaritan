@@ -1,9 +1,9 @@
 server:
-  port: 8080 
+  port: 8080
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://admin:admin@localhost:8761/eureka/
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://admin:admin@localhost:8761/eureka/}
 spring:
   application:
     name: api-gateway
@@ -11,11 +11,11 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:9000/realms/samaritan
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:9000/realms/samaritan}
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:9000/realms/samaritan  
+            issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:9000/realms/samaritan}
         registration:
           keycloak:
             client-id: samaritan
@@ -23,26 +23,29 @@ spring:
             scope: openid,profile,email
   threads:
     virtual:
-      enabled: true 
+      enabled: true
   data:
     redis:
-      port: 6379 
-      password: secret123  
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:secret123}
   cloud:
     gateway:
       server:
-        webmvc:
+        webflux:
           routes:
-          - id: user-service
-            uri: lb://user-service
-            predicates: Path=/api/user-service/**
-            filters:
-            - name: RequestRateLimiter
-              args: 
-                "[redis-rate-limiter.replenishRate]": 10
-                "[redis-rate-limiter.burstCapacity]": 20
-                "[redis-rate-limiter.requestedTokens]": 1
-            - name: CircuitBreaker
-              args:
-                name: user-service-CB
-                fallbackUri: forward:/fallback/user-service
+            - id: user-service
+              uri: lb://user-service
+              predicates:
+                - Path=/api/user-service/**
+              filters:
+                - name: RequestRateLimiter
+                  args:
+                    key-resolver: "#{@ipKeyResolver}"
+                    "[redis-rate-limiter.replenishRate]": 10
+                    "[redis-rate-limiter.burstCapacity]": 20
+                    "[redis-rate-limiter.requestedTokens]": 1
+                - name: CircuitBreaker
+                  args:
+                    name: user-service-CB
+                    fallbackUri: forward:/fallback/user-service
