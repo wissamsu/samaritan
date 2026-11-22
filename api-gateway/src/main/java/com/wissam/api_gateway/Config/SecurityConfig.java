@@ -27,7 +27,7 @@ public class SecurityConfig {
         .authorizeExchange(auth -> auth
             .pathMatchers("/actuator/health/**").permitAll()
             .pathMatchers("/fallback/**").permitAll()
-            .pathMatchers("/api/user-service/hello").permitAll()
+            .pathMatchers("/api/user-service/hello").authenticated()
             .anyExchange().authenticated())
         .oauth2Login(Customizer.withDefaults())
         .oauth2ResourceServer(oath2 -> oath2.jwt(Customizer.withDefaults()));

@@ -23,7 +23,7 @@ public class SecurityConfig {
         .csrf(csrf -> csrf.disable())
         .cors(Customizer.withDefaults())
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/hello", "/actuator/health").permitAll()
+            .requestMatchers("/hello", "/actuator/health").authenticated()
             .anyRequest().authenticated())
         .oauth2ResourceServer(oath2 -> oath2.jwt(Customizer.withDefaults()));
     return http.build();
