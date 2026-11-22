@@ -1,0 +1,3 @@
+/api-gateway/target/
+/user-service/target/
+/eureka-service/target/
