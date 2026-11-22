@@ -49,6 +49,4 @@ spring:
       enabled: true
   grpc:
     server:
-      enabled: false
-    client:
-      enabled: false
+      port: 9096
