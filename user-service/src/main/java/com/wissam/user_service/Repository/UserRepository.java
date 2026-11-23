@@ -12,4 +12,5 @@ import com.wissam.user_service.Models.User;
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
+  boolean existsByEmail(String email);
 }
