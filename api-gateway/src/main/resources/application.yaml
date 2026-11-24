@@ -1,4 +1,7 @@
 server:
+  compression:
+    enabled: true
+    min-response-size: 1024
   port: 8080
 eureka:
   client:
