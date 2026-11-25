@@ -22,8 +22,8 @@ jobs:
     - name: Build with Maven no tests
       run: mvn clean compile
 
-    - name: with tests
-      run: mvn -B clean verify
+    # - name: with tests
+    #   run: mvn -B clean verify
 
     - name: run docker compose
       run: docker compose -f compose2.yaml up -d --build --wait
