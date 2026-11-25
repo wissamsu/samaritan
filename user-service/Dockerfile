@@ -1,4 +1,4 @@
-FROM maven:4.0.0-rc-7-eclipse-temurin-21-alpine as builder
+FROM maven:4.0.0-rc-7-eclipse-temurin-21 as builder
 WORKDIR /app
 COPY . .
 RUN mvn -pl user-service -am package -DskipTests
