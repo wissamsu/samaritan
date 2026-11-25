@@ -3,6 +3,7 @@ services:
     build:
       context: ..
       dockerfile: automation-service/Dockerfile
+    image: ghcr.io/wissamsu/automation-gateway:latest
     ports:
       - 8082:8082
     environment:

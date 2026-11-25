@@ -3,6 +3,7 @@ services:
     build:
       context: ..
       dockerfile: user-service/Dockerfile
+    image: ghcr.io/wissamsu/user-service:latest
     ports:
       - 8081:8081
     environment:

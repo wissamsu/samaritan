@@ -3,6 +3,7 @@ services:
     build:
       context: ..
       dockerfile: eureka-service/Dockerfile
+    image: ghcr.io/wissamsu/eureka-service:latest
     ports:
       - 8761:8761
     healthcheck:
