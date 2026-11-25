@@ -1,7 +1,8 @@
 include:
-  - path: ./user-service/compose.yaml
-  - path: ./api-gateway/compose.yaml
-  - path: ./eureka-service/compose.yaml
+  - path: ./user-service/compose2.yaml
+  - path: ./api-gateway/compose2.yaml
+  - path: ./eureka-service/compose2.yaml
+  - path: ./automation-service/compose2.yaml
 
 services:
   kafka:

@@ -22,15 +22,6 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:9000/realms/samaritan}
-      client:
-        provider:
-          keycloak:
-            issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:9000/realms/samaritan}
-        registration:
-          keycloak:
-            client-id: samaritan
-            client-secret: t7rqN5xqUTyoDgVH9tpjMaeotIDJGN4fjJu8fdfG2eCpIkh9PE1MbZq80z0jUsgeOOtOXy735zAlSpWFkNextm
-            scope: openid,profile,email
   docker:
     compose:
       enabled: false

@@ -30,7 +30,7 @@ public class SecurityConfig {
         .csrf(csrf -> csrf.disable())
         .cors(Customizer.withDefaults())
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/hello", "/actuator/health").authenticated()
+            .requestMatchers("/actuator/health/**").authenticated()
             .anyRequest().authenticated())
         .oauth2ResourceServer(oath2 -> oath2.jwt(Customizer.withDefaults()))
         .addFilterAfter(new UserSaver(userRepository), BearerTokenAuthenticationFilter.class);
@@ -55,6 +55,7 @@ public class SecurityConfig {
     corsConfiguration.setAllowedOrigins(List.of("*"));
     corsConfiguration.setAllowedMethods(List.of("*"));
     corsConfiguration.setAllowedHeaders(List.of("*"));
+    corsConfiguration.setMaxAge(3600L);
     UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
     urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
     return urlBasedCorsConfigurationSource;
